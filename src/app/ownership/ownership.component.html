@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="ui stackable grid container">
+
+  <div class="ui sixteen wide column">
+    <br>
+    <h1 class="ui header">Ownership transfer</h1>
+    <p>Commit ownership transfer transaction to blockchain secured storage</p>
+  </div>
+
+  <div class="ui sixteen wide column">
+    <div class="ui cards">
+      <div class="card" *ngFor="let transfer of transfers">
+        <div class="content">
+          <div class="header">
+            Ownership Transfer
+          </div>
+          <div class="description">
+
+            <sui-tabset>
+              <div class="ui top attached tabular menu">
+                <a class="item" suiTabHeader="1">Details</a>
+                <a class="item" suiTabHeader="2">Items</a>
+              </div>
+              <div class="ui bottom attached segment" suiTabContent="1">
+                <p>Purchase order:
+                  <strong>{{ transfer?.order?.name }} ({{ transfer?.order?.code }})</strong>
+                </p>
+                <p>Previous owner:
+                  <strong>{{ transfer?.previous_owner?.first_name }} {{ transfer?.previous_owner?.last_name }}</strong>
+                </p>
+                <p>Current owner:
+                  <strong>{{ transfer?.current_owner?.first_name }} {{ transfer?.current_owner?.last_name }}</strong>
+                </p>
+              </div>
+              <div class="ui bottom attached segment" suiTabContent="2">
+                <ul class="ui list">
+                  <li *ngFor="let item of transfer.items">
+                    {{ item?.serial_no }}
+                  </li>
+                </ul>
+              </div>
+
+            </sui-tabset>
+
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="ui green bottom attached button" (click)="commitTransaction(transfer)">Commit to Blockchain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

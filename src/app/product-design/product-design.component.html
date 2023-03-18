@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="ui stackable grid container">
+
+  <div class="ui sixteen wide column">
+    <br>
+    <h1 class="ui header">Product Designs</h1>
+    <p>Commit product designs to blockchain secured storage</p>
+  </div>
+
+  <div class="ui sixteen wide column">
+    <div class="ui cards">
+      <div class="card" *ngFor="let design of designs">
+        <div class="image">
+          <img src="{{ design?.images[0]?.file }}">
+        </div>
+        <div class="content">
+          <div class="header">{{ design?.sku }}</div>
+          <div class="description">
+            {{ design?.name }}
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="ui green bottom attached button" (click)="commitTransaction(design)">Commit to Blockchain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
